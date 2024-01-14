@@ -1,5 +1,23 @@
 include("../src/RangeTrees.jl")
+    
+    
+using Random
 
-L = RTree1dNode(1,nothing,nothing)
+N = 100
+n = 15
+A = sort!(randperm(N)[1:n])
 
-R = RTree1dNode(2,L,nothing)
+r = sorted2BST(A)
+
+PrintLeft(r)
+PrintRight(r)
+
+#=
+for a in A
+    print(a," ")
+end
+
+print("\n")
+
+preOrderPrint(r)
+=#
