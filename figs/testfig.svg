@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="500" viewBox="0 0 2000 2000">
+<defs>
+  <clipPath id="clip450">
+    <rect x="0" y="0" width="2000" height="2000"/>
+  </clipPath>
+</defs>
+<path clip-path="url(#clip450)" d="M0 2000 L2000 2000 L2000 0 L0 0  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"/>
+<defs>
+  <clipPath id="clip451">
+    <rect x="400" y="200" width="1401" height="1401"/>
+  </clipPath>
+</defs>
+<path clip-path="url(#clip450)" d="M152.112 1865.17 L1952.76 1865.17 L1952.76 47.2441 L152.112 47.2441  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"/>
+<defs>
+  <clipPath id="clip452">
+    <rect x="152" y="47" width="1802" height="1819"/>
+  </clipPath>
+</defs>
+<circle clip-path="url(#clip452)" cx="1052.43" cy="956.206" r="21.6" fill="#ff0000" fill-rule="evenodd" fill-opacity="1" stroke="none"/>
+<circle clip-path="url(#clip452)" cx="1052.43" cy="891.28" r="21.6" fill="#ffffff" fill-rule="evenodd" fill-opacity="1" stroke="#0000ff" stroke-opacity="1" stroke-width="12"/>
+<circle clip-path="url(#clip452)" cx="409.347" cy="1605.46" r="21.6" fill="#000000" fill-rule="evenodd" fill-opacity="1" stroke="none"/>
+<circle clip-path="url(#clip452)" cx="1052.43" cy="1021.13" r="21.6" fill="#000000" fill-rule="evenodd" fill-opacity="1" stroke="none"/>
+<circle clip-path="url(#clip452)" cx="1695.52" cy="306.947" r="21.6" fill="#000000" fill-rule="evenodd" fill-opacity="1" stroke="none"/>
+</svg>
