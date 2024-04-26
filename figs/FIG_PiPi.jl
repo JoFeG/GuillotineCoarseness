@@ -1,4 +1,5 @@
 include("../src/PlotingUtils.jl")
+include("../src/NaiveCoarseness.jl")
 
 S = [
     0 0
@@ -13,6 +14,6 @@ w = [0, 0, -1, 1, 0]
 
 fig = PlotRBKpointsΠhulls(S, w, Π, fig_size = (650, 150),marker_size = 3)
 
-out_path = "figs/FIG_into.pdf"
+out_path = "figs/FIG_PiPi.pdf"
 savefig(fig, out_path)
 
