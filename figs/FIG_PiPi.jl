@@ -40,6 +40,6 @@ C(S)   = $c
             size = (p*fig_size[1],fig_size[2]),
             layout = (1,p)
         )
-    out_path = "figs/PiPis/FIG_PiPi_seed$seed.pdf"
+    out_path = "figs/temps/FIG_PiPi_seed$seed.pdf"
     savefig(fig, out_path)    
 end
