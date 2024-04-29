@@ -103,10 +103,10 @@ function PlotRBKpointsΠhulls(
         plot!(
             fig,
             VPolygon(j_hull), 
-            color = :lightgray,
-            alpha = 1,
-            linecolor = :lightgray,
-            linewidth = 2marker_size
+            color = RGBA(.95,.95,.95,1),
+            linecolor = RGBA(.75,.75,.75,1),
+            linestyle = :dash, 
+            linewidth = .5marker_size
         )
     end
 
