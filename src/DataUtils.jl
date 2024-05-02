@@ -1,3 +1,20 @@
+function baseDF(N,F)
+    N_df = zeros(Int,length(N)*length(I))
+    I_df = zeros(Int,length(N)*length(I))
+    
+    j = 0
+    for n in N
+        for i in I
+            j = j+1
+            N_df[j] = n
+            I_df[j] = i 
+        end
+    end
+
+    return df = DataFrame(n=N_df, i=I_df)
+end
+
+
 function readInstance(n, i)
     (n in [10 + 5k for k=0:10]) || throw(ArgumentError("size not in the dataset need n in $([10 + 5k for k=0:10])"))
     (i in 0:29) || throw(ArgumentError("index not in the dataset need i in 0:29)"))
