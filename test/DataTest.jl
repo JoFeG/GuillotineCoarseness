@@ -36,5 +36,5 @@ fig = plot(
         size = (p*fig_size[1],fig_size[2]),
         layout = (1,p)
     )
-out_path = "figs/temps/FIG_DATA_n$(n)_i$(i).pdf"
+out_path = "figs/temps/FIG_DATA_r0$n-$(lpad(i,3,"0")).pdf"
 savefig(fig, out_path) 
