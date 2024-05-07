@@ -1,12 +1,13 @@
 include("../src/NaiveCoarseness.jl")
+include("../src/GuillotineCoarseness.jl")
 include("../src/DataUtils.jl")
 
 using DataFrames
 using CSV
 
-# if isfile("Results_df.csv")
-#     Results_df = CSV.read("Results_df.csv", DataFrame)
-# end
+if true && isfile("data/Results_df.csv")
+     df = CSV.read("data/Results_df.csv", DataFrame)
+end
 
 
 N = [10,15,20,25,30]
@@ -45,6 +46,7 @@ end
 
 ## C(S) brute force for n==10
 if false
+    NIns = size(df,1)
     c_bf = zeros(Int, NIns)
     k_bf_min = zeros(Int, NIns)
     k_bf_max = zeros(Int, NIns)
@@ -67,5 +69,27 @@ if false
     df.k_bf_max = k_bf_max
     df.K_bf = K_bf
 
+    CSV.write("data/Results_df.csv",df)
+end
+
+
+## Cg(S) via DP for n=10:5:30
+if true
+    NIns = size(df,1)
+    c_g = zeros(Int, NIns)
+    
+    for j = 1:5
+        n = N[j]
+        for i in I
+            println("---------------------------------------\ni = $i\nn= $n")
+            S, w = readInstance(n, i)
+            C, P, D, midpoints_x, midpoints_y, argcuts, idxcuts = coarseness_g(S,w)
+            c = C[1,1,n,n]
+            println("Cg = $c")
+            c_g[30*(j-1)+i+1] = c
+        end
+    end
+    
+    df.c_g = c_g
     CSV.write("data/Results_df.csv",df)
 end
