@@ -117,3 +117,140 @@ function coarseness_g(
     
     return C, P, D, midpoints_x, midpoints_y, argcuts, idxcuts
 end
+
+
+function coarseness_TLg(
+        S::Matrix{<:Real}, 
+        w::Vector{<:Integer}
+    )
+    
+    n = length(w)
+
+    # Horizontal first #######################################################################
+    
+    # Utils ##################################################################################
+    sortperm_x = sortperm(S[:, 1])
+    Cvh = zeros(Int, n)
+    H1 = zeros(Int, n, n)
+    H2 = zeros(Int, n, n)
+    H3 = zeros(Int, n, n)
+    
+    # H = min(H1,H2,H3) ######################################################################
+    for i = 1:n
+        for j = i:n
+            h_members = sortperm_x[i:j]
+            S_h = S[h_members,:]
+            w_h = w[h_members]
+            n_h = length(w_h) # == j-i+1
+            
+            H1[i,j] = abs(sum(w_h))
+            sortperm_yh = sortperm(S_h[:,2])
+            
+            sorted_wh = w_h[sortperm_yh] 
+            for s = 1:(n_h - 1)
+                H2_new = min(
+                            abs(sum(sorted_wh[1:s])),
+                            abs(sum(sorted_wh[s+1:n_h]))
+                            )
+                if H2_new > H2[i,j]
+                    H2[i,j] = H2_new
+                end
+            end
+        
+            for s = 1:(n_h - 2)
+                for t = (s + 1):(n_h - 1)
+                    H3_new = min(
+                                abs(sum(sorted_wh[1:s])),
+                                abs(sum(sorted_wh[s+1:t])),
+                                abs(sum(sorted_wh[t+1:n_h]))
+                                )
+                    if H3_new > H3[i,j]
+                        H3[i,j] = H3_new
+                    end
+                end
+            end
+        end
+    end
+    H = max.(H1, H2, H3)
+    
+    # Horizontal DP ########################################################################## 
+    Cvh[1] = 1
+    Cvh[2:n] = H1[1,2:n]
+    for i = 2:n
+        for s = 1:(i-1)
+            Cvh_new = min(Cvh[s], H[s+1, i])
+            if Cvh_new > Cvh[i]
+                Cvh[i] = Cvh_new
+            end
+        end
+    end
+    
+    # Vertical first #########################################################################
+    
+    # Utils ##################################################################################
+    sortperm_y = sortperm(S[:, 2])
+    Chv = zeros(Int, n)
+    V1 = zeros(Int, n, n)
+    V2 = zeros(Int, n, n)
+    V3 = zeros(Int, n, n)
+    
+    # V = min(V1,V2,V3) ######################################################################
+    for i = 1:n
+        for j = i:n
+            v_members = sortperm_y[i:j]
+            S_v = S[v_members,:]
+            w_v = w[v_members]
+            n_v = length(w_v) # == j-i+1
+            
+            V1[i,j] = abs(sum(w_v))
+            sortperm_xv = sortperm(S_v[:,1])
+            
+            sorted_wv = w_v[sortperm_xv] 
+            for s = 1:(n_v - 1)
+                V2_new = min(
+                            abs(sum(sorted_wv[1:s])),
+                            abs(sum(sorted_wv[s+1:n_v]))
+                            )
+                if V2_new > V2[i,j]
+                    V2[i,j] = V2_new
+                end
+            end
+        
+            for s = 1:(n_v - 2)
+                for t = (s + 1):(n_v - 1)
+                    V3_new = min(
+                                abs(sum(sorted_wv[1:s])),
+                                abs(sum(sorted_wv[s+1:t])),
+                                abs(sum(sorted_wv[t+1:n_v]))
+                                )
+                    if V3_new > V3[i,j]
+                        V3[i,j] = V3_new
+                    end
+                end
+            end
+        end
+    end
+    V = max.(V1, V2, V3)
+
+    # Vertical DP ############################################################################ 
+    Chv[1] = 1
+    Chv[2:n] = V1[1,2:n]
+    for i = 2:n
+        for s = 1:(i-1)
+            Chv_new = min(Chv[s], V[s+1, i])
+            if Chv_new > Chv[i]
+                Chv[i] = Chv_new
+            end
+        end
+    end
+    
+    
+    
+    C_TLg = max(Cvh[n],Chv[n])
+
+    # println("C_TLg = max(Cvh[n],Chv[n]) = max($(Cvh[n]),$(Chv[n])) = $C_TLg")
+    # return H1, H2, H3, H, Cvh, V1, V2, V3, V, Chv
+    # H1, H2, H3, H, Cvh, V1, V2, V3, V, Chv = coarseness_TLg(S,w)
+    
+    return C_TLg
+end

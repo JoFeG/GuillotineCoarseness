@@ -74,7 +74,7 @@ end
 
 
 ## Cg(S) via DP for n=10:5:30
-if true
+if false
     NIns = size(df,1)
     c_g = zeros(Int, NIns)
     
@@ -92,4 +92,26 @@ if true
     
     df.c_g = c_g
     CSV.write("data/Results_df.csv",df)
+end
+
+
+
+## C_TLg(S) via DP for n=10:5:30
+if true
+    NIns = size(df,1)
+    c_TLg = zeros(Int, NIns)
+    
+    for j = 1:5
+        n = N[j]
+        for i in I
+            println("---------------------------------------\ni = $i\nn= $n")
+            S, w = readInstance(n, i)
+            c = coarseness_TLg(S,w)
+            println("C_TLg = $c")
+            c_TLg[30*(j-1)+i+1] = c
+        end
+    end
+    
+    df.c_TLg = c_TLg
+    CSV.write("data/Results_df.csv", df)
 end
