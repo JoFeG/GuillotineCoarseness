@@ -4,7 +4,7 @@ include("../src/GuillotineCoarseness.jl")
 include("../src/DataUtils.jl")
 
 n = 10
-i = 8
+i = 21
 
 S, w = readInstance(n, i)
 
@@ -30,7 +30,7 @@ for k=1:size(Π)[2]
                 S, 
                 w, 
                 Π[:,k], 
-                fig_size = (400,400), 
+                fig_size = (300,300), 
                 marker_size = 3
             )
 
