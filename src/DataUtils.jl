@@ -40,6 +40,7 @@ function readInstance(n, i)
     return S, w
 end
 
+
 function readSolution(n, i, t)
     (n in [10 + 5k for k=0:10]) || throw(ArgumentError("size not in the dataset need n in $([10 + 5k for k=0:10])"))
     (i in 0:29) || throw(ArgumentError("index not in the dataset need i in 0:29)"))
