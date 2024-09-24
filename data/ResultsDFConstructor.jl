@@ -81,7 +81,7 @@ if false
     for j = 1:5
         n = N[j]
         for i in I
-            println("---------------------------------------\ni = $i\nn= $n")
+            println("---------------------------------------\ni = $i\nn = $n")
             S, w = readInstance(n, i)
             C, P, D, midpoints_x, midpoints_y, argcuts, idxcuts = coarseness_g(S,w)
             c = C[1,1,n,n]
@@ -104,7 +104,7 @@ if true
     for j = 1:5
         n = N[j]
         for i in I
-            println("---------------------------------------\ni = $i\nn= $n")
+            println("---------------------------------------\ni = $i\nn = $n")
             S, w = readInstance(n, i)
             c = coarseness_TLg(S,w)
             println("C_TLg = $c")
