@@ -1,0 +1,33 @@
+#### Table Results.csv ####
+
+Contains the experimental results for instances with n = 10, 15, 20, 25, and 30.
+
+## Columns ##
+
+    n           : instance size
+    i           : instance id 
+    c_ILP1      : C_ILP value method 1
+    c_ILP2      : C_ILP value method 2
+    k_ILP1      : number of parts C_ILP1 solution
+    k_ILP2      : number of parts C_ILP2 solution
+    Π_ILP_1eq2  : true if the solutions of C_ILP1 and C_ILP2 are equal
+    c_bf        : C value via brute force algorithm (only for n=10)
+    k_bf_min    : size of C solution with less number of parts (only for n=10)
+    k_bf_max    : size of C solution with more number of parts (only for n=10)
+    K_bf        : number of different C solutions (only for n=10)                                                                                                                              
+    c_g         : c_g value
+    c_TLg       : c_TLg value
+    
+    
+#### Table ResultsBIG.csv ####
+
+Contains the experimental results for instances with n = 35 to 60.
+
+## Columns ##
+
+    n           : instance size
+    i           : instance id 
+    c_g         : c_g value
+    c_TLg       : c_TLg value
+    c_g_time    : c_g computing time in seconds
+    c_TLg_time  : c_TLg computing time in seconds

@@ -1,4 +1,4 @@
-n,i,c_br1,c_br2,k_br1,k_br2,Π_br_1eq2,c_bf,k_bf_min,k_bf_max,K_bf,c_g,c_TLg
+n,i,c_ILP1,c_ILP2,k_ILP1,k_ILP2,Π_ILP_1eq2,c_bf,k_bf_min,k_bf_max,K_bf,c_g,c_TLg
 10,0,4,4,1,1,true,4,1,1,1,4,4
 10,1,4,4,1,1,true,4,1,1,1,4,4
 10,2,2,2,1,1,true,2,1,5,30,2,2
